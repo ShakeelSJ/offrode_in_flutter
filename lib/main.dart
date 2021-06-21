@@ -16,12 +16,13 @@ class MyApp extends StatelessWidget {
       theme: MyTheme.lightTheme(context),
       darkTheme: MyTheme.darkTheme(context),
       debugShowCheckedModeBanner: false,
-      initialRoute: MyRoutes.homeRoute,
-      routes: {
-        "/": (context) => HomePage(),
+   //   initialRoute: MyRoutes.homeRoute,
+      home:HomePage()
+    //  routes: {
+   //     "/": (context) => HomePage(),
         // MyRoutes.homeRoute: (context) => HomePage(),
         // MyRoutes.loginRoute: (context) => LoginPage()
-      },
+    //  },
     );
   
   }

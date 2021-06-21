@@ -1,13 +1,16 @@
-import 'package:dropdown_search/dropdown_search.dart';
+// import 'package:dropdown_search/dropdown_search.dart';
+import 'package:find_dropdown/find_dropdown.dart';
 import 'package:flutter/material.dart';
 
 class mainBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new Stack(
+    var width = MediaQuery.of(context).size.width;
+    return new Column(
       children: [
         Container(
-          height: 300.0,
+          height: 320.0,
+          width: width,
           decoration: BoxDecoration(
             color: const Color(0xff000000),
             image: new DecorationImage(
@@ -17,137 +20,178 @@ class mainBanner extends StatelessWidget {
               image: AssetImage('assets/images/home_bannner.jpg'),
             ),
           ),
-        ),
-        Positioned(
-          top: 20.0,
-          left: 25,
-          height: 50,
-          width: 180,
-          child: Container(
-            child: Container(
-              height: 150.0,
-              width: 250.0,
-              color: Colors.transparent,
-              child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.orange[900],
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.zero,
-                        topRight: Radius.circular(100.0),
-                        bottomLeft: Radius.zero,
-                        bottomRight: Radius.zero,
-                      )),
-                  child: new Center(
-                    child: new Text(
-                      "Oil Change Adviser",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center,
-                    ),
-                  )),
-            ),
-          ),
-        ),
-        Positioned(
-          top: 70.0,
-          left: 25,
-          height: 211,
-          width: 360,
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(3.0),
-                bottomRight: Radius.circular(3.0),
-                bottomLeft: Radius.circular(3.0),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 20,
               ),
-              color: Colors.white,
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: GridView(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 10,
-                    crossAxisSpacing: 15,
-                    childAspectRatio: 3,
+              Padding(
+                padding: const EdgeInsets.fromLTRB(32, 8, 0, 0),
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: Container(
+                    height: 40.0,
+                    width: 170.0,
+                    color: Colors.transparent,
+                    child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.orange[900],
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.zero,
+                              topRight: Radius.circular(100.0),
+                              bottomLeft: Radius.zero,
+                              bottomRight: Radius.zero,
+                            )),
+                        child: new Center(
+                          child: new Text(
+                            "Oil Change Adviser",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.center,
+                          ),
+                        )),
                   ),
-                  children: [
-                    Container(
-                      child: (DropdownSearch<String>(
-                          mode: Mode.MENU,
-                          showSelectedItem: true,
-                          items: ["BMW", "AUDI", "HONDA", 'DAIHATSU'],
-                          label: "Make",
-                          hint: "country in menu mode",
-                          onChanged: print,
-                          selectedItem: "Make")),
+                ),
+              ),
+              Container(
+                height: 218,
+                width: width / 1.2,
+                decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(0),
+                      topRight: Radius.circular(3.0),
+                      bottomRight: Radius.circular(3.0),
+                      bottomLeft: Radius.circular(3.0),
                     ),
-                    Container(
-                      child: (DropdownSearch<String>(
-                          mode: Mode.MENU,
-                          showSelectedItem: true,
-                          items: [
-                            "3 Series",
-                            "4 Series",
-                            "2 Series",
-                            '1 Series'
-                          ],
-                          label: "Model",
-                          hint: "country in menu mode",
-                          onChanged: print,
-                          selectedItem: "Model")),
-                    ),
-                    Container(
-                      child: (DropdownSearch<String>(
-                          mode: Mode.MENU,
-                          showSelectedItem: true,
-                          items: ["2013", "2001", "2010", '2020'],
-                          label: "Year",
-                          hint: "country in menu mode",
-                          onChanged: print,
-                          selectedItem: "Year")),
-                    ),
-                    Container(
-                      child: (DropdownSearch<String>(
-                          mode: Mode.MENU,
-                          showSelectedItem: true,
-                          items: ["1600cc", "1700cc", "1800cc", '1900cc'],
-                          label: "Engine",
-                          hint: "country in menu mode",
-                          onChanged: print,
-                          selectedItem: "Engine")),
-                    ),
-                    Container(
-                      child: (DropdownSearch<String>(
-                          mode: Mode.MENU,
-                          showSelectedItem: true,
-                          items: [
-                            "0 to 50000",
-                            "4000 to 50000",
-                            "10000 to 50000",
-                            '0 to 100000',
-                          ],
-                          label: "Mileage",
-                          hint: "country in menu mode",
-                          onChanged: print,
-                          selectedItem: "Mileage")),
-                    ),
-                    Container(
-                      child: (DropdownSearch<String>(
-                          mode: Mode.MENU,
-                          showSelectedItem: true,
-                          items: [
-                            "Petrol",
-                          ],
-                          label: "Fuel  ",
-                          hint: "country in menu mode",
-                          onChanged: print,
-                          selectedItem: "Fuel")),
-                    ),
-                  ]),
-            ),
+                    color: Colors.white),
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 17, 0, 0),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Container(
+                            width: width / 3,
+                            child: FindDropdown(
+                              items: ["BMW", "Honda", "CVC", "Swift"],
+                              // label: "País",
+                              onChanged: (String item) => print(item),
+                              selectedItem: "Make",
+                              validate: (String item) {
+                                if (item == null)
+                                  return "Required field";
+                                else if (item == "Brasil")
+                                  return "Invalid item";
+                                else
+                                  return null; //return null to "no error"
+                              },
+                            ),
+                          ),
+                          Container(
+                            width: width / 3,
+                            child: FindDropdown(
+                              items: ["BMW", "Honda", "CVC", "Swift"],
+                              // label: "País",
+                              onChanged: (String item) => print(item),
+                              selectedItem: "Model",
+                              validate: (String item) {
+                                if (item == null)
+                                  return "Required field";
+                                else if (item == "Brasil")
+                                  return "Invalid item";
+                                else
+                                  return null; //return null to "no error"
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Container(
+                            width: width / 3,
+                            child: FindDropdown(
+                              items: ["BMW", "Honda", "CVC", "Swift"],
+                              // label: "País",
+                              onChanged: (String item) => print(item),
+                              selectedItem: "Make",
+                              validate: (String item) {
+                                if (item == null)
+                                  return "Required field";
+                                else if (item == "Brasil")
+                                  return "Invalid item";
+                                else
+                                  return null; //return null to "no error"
+                              },
+                            ),
+                          ),
+                          Container(
+                            width: width / 3,
+                            child: FindDropdown(
+                              items: ["BMW", "Honda", "CVC", "Swift"],
+                              // label: "País",
+                              onChanged: (String item) => print(item),
+                              selectedItem: "Model",
+                              validate: (String item) {
+                                if (item == null)
+                                  return "Required field";
+                                else if (item == "Brasil")
+                                  return "Invalid item";
+                                else
+                                  return null; //return null to "no error"
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Container(
+                            width: width / 3,
+                            child: FindDropdown(
+                              items: ["BMW", "Honda", "CVC", "Swift"],
+                              // label: "País",
+                              onChanged: (String item) => print(item),
+                              selectedItem: "Make",
+                              validate: (String item) {
+                                if (item == null)
+                                  return "Required field";
+                                else if (item == "Brasil")
+                                  return "Invalid item";
+                                else
+                                  return null; //return null to "no error"
+                              },
+                            ),
+                          ),
+                          Container(
+                            width: width / 3,
+                            child: FindDropdown(
+                              items: ["BMW", "Honda", "CVC", "Swift"],
+                              // label: "País",
+                              onChanged: (String item) => print(item),
+                              selectedItem: "Model",
+                              validate: (String item) {
+                                if (item == null)
+                                  return "Required field";
+                                else if (item == "Brasil")
+                                  return "Invalid item";
+                                else
+                                  return null; //return null to "no error"
+                              },
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              )
+            ],
           ),
         ),
       ],
