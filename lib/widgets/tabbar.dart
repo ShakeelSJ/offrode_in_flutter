@@ -1,9 +1,11 @@
 // import 'dart:js';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'dart:async' show Future;
+import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';
-import 'package:offrode/models/catalog.dart';
-import 'package:offrode/widgets/item_widget.dart';
+import 'package:flutter/services.dart';
+import 'package:offrode/models/offrode.dart';
+// import 'package:offrode/widgets/item_widget.dart';
 
 class MyBrandTab extends StatefulWidget {
   @override
@@ -19,13 +21,13 @@ class MyBrandTabState extends State<MyBrandTab> {
       loadData();
     }
 
-    loadData() async {
+     loadData() async {
       await Future.delayed(Duration(seconds: 2));
-      final catalogJson =
-          await rootBundle.loadString("assets/files/catalog.json");
-      final decodedData = jsonDecode(catalogJson);
+      final offrodeJson =
+          await rootBundle.loadString("assets/files/offrode.json");
+      final decodedData = jsonDecode(offrodeJson);
       var productsData = decodedData["products"];
-      CatalogModel.items = List.from(productsData)
+      OffrodeModel.items = List.from(productsData)
           .map<Item>((item) => Item.fromMap(item))
           .toList();
       setState(() {});
@@ -109,8 +111,8 @@ class MyBrandTabState extends State<MyBrandTab> {
         body: TabBarView(
           children: <Widget>[
             Center(
-              child: (CatalogModel.items != null &&
-                      CatalogModel.items.isNotEmpty)
+              child: (OffrodeModel.items != null &&
+                      OffrodeModel.items.isNotEmpty)
                   ? GridView.builder(
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
